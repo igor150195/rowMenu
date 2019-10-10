@@ -1,8 +1,8 @@
 # rowMenu - Плагин, которые сворачивает пункты меню, которые не помещаются в 1 строку
 <br>
 $('.menu').rowMenu({<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"moreText":"Еще",<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"moreWidth": 100<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">"moreText":"Еще",</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">"moreWidth": 100</span><br>
 });
 <br>
 <br>
