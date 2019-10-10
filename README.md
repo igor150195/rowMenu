@@ -1,6 +1,6 @@
 # rowMenu
 
-$('.menu').rowMenu({
-    "moreText":"Еще",
+$('.menu').rowMenu({<br>
+    "moreText":"Еще",<br>
     "moreWidth": 100
 });
