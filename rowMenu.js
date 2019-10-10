@@ -1,3 +1,7 @@
+/*
+	https://github.com/igor150195/rowMenu 10.10.2019
+*/
+
 $.fn.rowMenu = function(options) {
 	return this.each(function() {
 		var timeout;
