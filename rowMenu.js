@@ -40,7 +40,7 @@ $.fn.rowMenu = function(options) {
 					$this.attr('data-append', 1);
 
 					if ($menu.find('.' + settings.moreBtnClass).length<1) {
-						$menu.append('<li class="'+settings.moreBtnClass+'"><a href="#">'+settings.moreText+'</a><ul class="'+settings.moreContainerClass+'"></ul></li>');
+						$menu.append('<li class="'+settings.moreBtnClass+'"><a href="javascript:void(0);">'+settings.moreText+'</a><ul class="'+settings.moreContainerClass+'"></ul></li>');
 						$menu.find('.' + settings.moreBtnClass).insertBefore($menu.find('[data-append="1"]').first());
 					};
 					$menu.find('[data-append="1"]').appendTo($menu.find('.' + settings.moreContainerClass));
