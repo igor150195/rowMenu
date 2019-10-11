@@ -1,6 +1,4 @@
-/*
-	https://github.com/igor150195/rowMenu 10.10.2019
-*/
+// https://github.com/igor150195/rowMenu 10.10.2019
 
 $.fn.rowMenu = function(options) {
 	return this.each(function() {
@@ -12,6 +10,7 @@ $.fn.rowMenu = function(options) {
 			'moreText'         			: 'Еще',
 			'moreWidth'        			: 100,
 			'resizeTimeout'        		: 10,
+			'moreHideTimeout'        	: 500,
 			'moreBtnClass'	   			: 'row-menu-btn',
 			'moreContainerClass'	    : 'row-menu-container'
 	    }, options);
@@ -51,6 +50,38 @@ $.fn.rowMenu = function(options) {
 			});
 
 			$menu.find('li').removeAttr('data-append');
+
+			$menu.find('.' + settings.moreBtnClass).find('ul').parent().each(function() {
+	            var o = $(this);
+	            var s = o.find('>ul');
+	            var l = o.parents('ul').length;
+	            var k = false;
+	            o.hover(
+	                function() {
+	                    o.find('>a').addClass('active').removeClass('normal');
+	                    for (i=$menu.find('.' + settings.moreBtnClass).find('ul').length; i>=0; i--){
+	                        o.parent().find('>li').not(o).find('ul').eq(i).hide();
+	                    }
+	                    k = true;
+
+	                    s.show();
+
+	                    if ($(document).outerWidth()>$(window).outerWidth()) {
+	                    	o.find('>ul').addClass('row-right-level');
+	                    };
+	                },
+	                function() {
+	                    o.find('>a').removeClass('active').addClass('normal');
+	                    k = false;
+	                    window.setTimeout(function() {
+	                        if (!k) {
+	                        	s.hide()
+	                        	o.find('>ul').removeClass('row-right-level');                        
+	                        };
+	                    }, settings.moreHideTimeout);
+	                }
+	            );
+	        });
 		};
 
 		function resizeRowMenu() {
