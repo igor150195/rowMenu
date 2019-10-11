@@ -33,7 +33,7 @@ $.fn.rowMenu = function(options) {
 
 			$li.each(function() {
 				var $this = $(this);
-				var thisWidth = $this.outerWidth();
+				var thisWidth = $this.outerWidth(true);
 
 				menuWdith += thisWidth;
 
