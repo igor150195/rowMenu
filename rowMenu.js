@@ -1,5 +1,3 @@
-// https://github.com/igor150195/rowMenu 10.10.2019
-
 $.fn.rowMenu = function(options) {
 	return this.each(function() {
 		var timeout;
@@ -15,16 +13,22 @@ $.fn.rowMenu = function(options) {
 			'moreContainerClass'	    : 'row-menu-container'
 	    }, options);
 
-		rowMenuInit();
+		if (options!='destroy') {
+			rowMenuInit();
 
-		$(window).on('resize', function(){
-			if (timeout!=='undefined') {
-				clearTimeout(timeout);
-			};
-			timeout = setTimeout(function(){
-				resizeRowMenu();
-			}, settings.resizeTimeout);
-		});
+			$(window).on('resize.rowMenu', function(){
+				if (timeout!=='undefined') {
+					clearTimeout(timeout);
+				};
+				timeout = setTimeout(function(){
+					resizeRowMenu();
+				}, settings.resizeTimeout);
+			});
+		};
+
+		if (options=='destroy') {
+			rowMenuDestroy();
+		};
 
 		function rowMenuInit() {
 			var menuWdith = 0;
@@ -90,6 +94,14 @@ $.fn.rowMenu = function(options) {
 			$menu.find('.' + settings.moreBtnClass).remove();
 
 			rowMenuInit();
+		};
+
+		function rowMenuDestroy() {
+			var html = $menu.find('.row-menu-container').html();
+
+			$(window).off('resize.rowMenu');
+			$menu.find('.row-menu-btn').remove();
+			$menu.append(html);
 		};
 	});
 };
