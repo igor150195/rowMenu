@@ -33,6 +33,8 @@ $.fn.rowMenu = function(options) {
 		function rowMenuInit() {
 			var menuWdith = 0;
 			var menuMaxWdith = $menu.outerWidth();
+			
+			$menu.addClass('row-menu-init');
 
 			$li.each(function() {
 				var $this = $(this);
@@ -102,6 +104,7 @@ $.fn.rowMenu = function(options) {
 			$(window).off('resize.rowMenu');
 			$menu.find('.row-menu-btn').remove();
 			$menu.append(html);
+			$menu.removeClass('row-menu-init');
 		};
 	});
 };
